@@ -58,6 +58,7 @@ namespace my_favours
         public KeyboardHook keyboardHook = new KeyboardHook();
         public static int vkCode, scanCode;
         public static bool KeyboardHookButtonDown, KeyboardHookButtonUp;
+        public static bool starting = true;
         public static int[] wd = { 2, 2, 2, 2 };
         public static int[] wu = { 2, 2, 2, 2 };
         public static void valchanged(int n, bool val)
@@ -97,6 +98,8 @@ namespace my_favours
             y = this.Location.Y;
             cx = this.Size.Width;
             cy = this.Size.Height;
+            this.label1.Location = new Point(cx / 2 - this.label1.Size.Width / 2, cy / 2 - this.label1.Height / 2 - this.label2.Height);
+            this.label2.Location = new Point(cx / 2 - this.label2.Size.Width / 2, cy / 2 - this.label2.Height / 2 + this.label2.Height);
             CoreWebView2EnvironmentOptions options = new CoreWebView2EnvironmentOptions("--disable-web-security", "--autoplay-policy=no-user-gesture-required");
             CoreWebView2Environment environment = await CoreWebView2Environment.CreateAsync(null, null, options);
             await webView21.EnsureCoreWebView2Async(environment);
@@ -108,7 +111,7 @@ namespace my_favours
             webView21.CoreWebView2.SetVirtualHostNameToFolderMapping("appassets", "assets", CoreWebView2HostResourceAccessKind.DenyCors);
             webView21.Source = new System.Uri("https://www.youtube.com/feed/subscriptions");
             webView21.Dock = DockStyle.Fill;
-            webView21.DefaultBackgroundColor = Color.Transparent;
+            webView21.DefaultBackgroundColor = Color.Black;
             webView21.CoreWebView2.AddHostObjectToScript("bridge", new Bridge());
             webView21.NavigationStarting += WebView21_NavigationStarting;
             webView21.NavigationCompleted += WebView21_NavigationCompleted;
@@ -138,6 +141,13 @@ namespace my_favours
         }
         private async void WebView21_NavigationCompleted(object sender, Microsoft.Web.WebView2.Core.CoreWebView2NavigationCompletedEventArgs e)
         {
+            if (starting)
+            {
+                this.Controls.Remove(label1);
+                this.Controls.Remove(label2);
+                this.Controls.Remove(label3);
+                starting = false;
+            }
             string tempsavepath = System.Reflection.Assembly.GetEntryAssembly().Location.Replace(@"file:\", "").Replace(Process.GetCurrentProcess().ProcessName + ".exe", "").Replace(@"\", "/").Replace(@"//", "") + "tempsave";
             string savedstorage = "[]";
             if (File.Exists(tempsavepath))
