@@ -10,6 +10,7 @@ using WebView2 = Microsoft.Web.WebView2.WinForms.WebView2;
 using System.Diagnostics;
 using System.Text;
 using System.ComponentModel;
+using System.Drawing;
 
 namespace my_favours
 {
@@ -107,6 +108,7 @@ namespace my_favours
             webView21.CoreWebView2.SetVirtualHostNameToFolderMapping("appassets", "assets", CoreWebView2HostResourceAccessKind.DenyCors);
             webView21.Source = new System.Uri("https://www.youtube.com/feed/subscriptions");
             webView21.Dock = DockStyle.Fill;
+            webView21.DefaultBackgroundColor = Color.Transparent;
             webView21.CoreWebView2.AddHostObjectToScript("bridge", new Bridge());
             webView21.NavigationStarting += WebView21_NavigationStarting;
             webView21.NavigationCompleted += WebView21_NavigationCompleted;
