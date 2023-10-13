@@ -477,8 +477,6 @@ var span = document.getElementsByClassName('close')[0];
 var modal = document.getElementById('myModal');
 var slideIndex = 1;
 var tempclass = '';
-var resindicex = window.screen.width;
-var resindicey = window.screen.height;
 
 function changeTitle() {
     document.title = 'my-favours by michael franiatte';
@@ -573,7 +571,7 @@ async function createModal(x) {
             file = file.replace('https://www.youtube.com/watch?v=', 'https://www.youtube.com/embed/');
             file = file.replace('https://www.youtu.be/watch?v=', 'https://www.youtube.com/embed/');
             htmlString += `<div class=\'mySlides\' data-link=\'` + file + `\'>
-                                <iframe src=\'` + file + `\' frameborder=\'0\' allowfullscreen class=\'content\' style=\'width:` + resindicex * 70 / 100 + `px;height:` + 6.6 / 16 * resindicex * 70 / 100 + `px;\'></iframe>
+                                <iframe src=\'` + file + `\' frameborder=\'0\' allowfullscreen class=\'content\' style=\'width:` + 80 + `vw;height:` + 6.6 / 16 * 80 + `vw;\'></iframe>
                             </div>`;
         }
     }
