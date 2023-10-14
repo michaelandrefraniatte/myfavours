@@ -150,16 +150,26 @@ namespace my_favours
                 System.Threading.Thread.Sleep(40);
             }
         }
+        private void Form1_SizeChanged(object sender, EventArgs e)
+        {
+            if (starting)
+            {
+                this.label1.Location = new Point(this.Width / 2 - this.label1.Size.Width / 2, this.Height / 2 - this.label1.Height / 2 - this.label2.Height);
+                this.label2.Location = new Point(this.Width / 2 - this.label2.Size.Width / 2, this.Height / 2 - this.label2.Height / 2 + this.label2.Height);
+                this.pictureBox1.Location = new Point(this.Width / 2 - this.pictureBox1.Size.Width / 2, this.Height * 1 / 4);
+                this.progressBar1.Location = new Point(this.Width / 2 - this.progressBar1.Size.Width / 2, this.Height * 2 / 3);
+            }
+        }
         private async void WebView21_NavigationCompleted(object sender, Microsoft.Web.WebView2.Core.CoreWebView2NavigationCompletedEventArgs e)
         {
             if (starting)
             {
+                starting = false;
                 this.Controls.Remove(progressBar1);
                 this.Controls.Remove(label1);
                 this.Controls.Remove(label2);
                 this.Controls.Remove(label3);
                 this.Controls.Remove(pictureBox1);
-                starting = false;
             }
             string tempsavepath = System.Reflection.Assembly.GetEntryAssembly().Location.Replace(@"file:\", "").Replace(Process.GetCurrentProcess().ProcessName + ".exe", "").Replace(@"\", "/").Replace(@"//", "") + "tempsave";
             string savedstorage = "[]";
