@@ -663,6 +663,7 @@ function getcontentminus(val) {
     if (val.includes('https://drive.google.com/uc?id=')) {
         val = val.replace('https://drive.google.com/uc?id=', 'http://drive.google.com/uc?id=');
     }
+    val = val.replace('https://www.youtu.be/watch?v=', 'https://www.youtube.com/watch?v=');
     var item = val;
     if (!(item == null || item == '')) {
         myfavours = JSON.parse(JSON.stringify(savedstorage) || '[]');
@@ -698,6 +699,7 @@ function getcontentplus(val) {
     if (val.includes('https://drive.google.com/uc?id=')) {
         val = val.replace('https://drive.google.com/uc?id=', 'http://drive.google.com/uc?id=');
     }
+    val = val.replace('https://www.youtu.be/watch?v=', 'https://www.youtube.com/watch?v=');
     var item = val;
     if (!(item == null || item == '')) {
         myfavours = JSON.parse(JSON.stringify(savedstorage)) || [];
@@ -831,6 +833,7 @@ function getlistminus(val) {
     if (val.includes('https://drive.google.com/uc?id=')) {
         val = val.replace('https://drive.google.com/uc?id=', 'http://drive.google.com/uc?id=');
     }
+    val = val.replace('https://www.youtu.be/watch?v=', 'https://www.youtube.com/watch?v=');
     var item = val;
     if (!(item == null || item == '')) {
         myfavours = JSON.parse(JSON.stringify(savedstorage) || '[]');
@@ -859,6 +862,7 @@ function getlistplus(val) {
     if (val.includes('https://drive.google.com/uc?id=')) {
         val = val.replace('https://drive.google.com/uc?id=', 'http://drive.google.com/uc?id=');
     }
+    val = val.replace('https://www.youtu.be/watch?v=', 'https://www.youtube.com/watch?v=');
     var item = val;
     if (!(item == null || item == '')) {
         myfavours = JSON.parse(JSON.stringify(savedstorage)) || [];
@@ -886,6 +890,7 @@ function getchangefavour(val) {
     if (val.includes('https://drive.google.com/uc?id=')) {
         val = val.replace('https://drive.google.com/uc?id=', 'http://drive.google.com/uc?id=');
     }
+    val = val.replace('https://www.youtu.be/watch?v=', 'https://www.youtube.com/watch?v=');
     var item = val;
     if (!(item == null || item == '')) {
         myfavours = JSON.parse(JSON.stringify(savedstorage) || '[]');
