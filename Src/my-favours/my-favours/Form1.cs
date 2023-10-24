@@ -577,7 +577,8 @@ function showSlides(n) {
   var link = $('.mySlides:visible').data('link');
   var downloadlink = document.getElementById('download');
   link = link.replace('https://www.youtube.com/embed/', 'https://www.youtube.com/watch?v=');
-  downloadlink.href = link.replace('https://www.youtu.be/watch?v=', 'https://www.youtube.com/watch?v=');
+  link = link.replace('?rel=0', '');
+  downloadlink.href = link;
 }
 
 async function createModal(x) {
@@ -610,8 +611,8 @@ async function createModal(x) {
     }
     for (let file of files) {
         if (file.includes('www.youtu')) {
-            file = file.replace('https://www.youtube.com/watch?v=', 'https://www.youtube.com/embed/');
-            file = file.replace('https://www.youtu.be/watch?v=', 'https://www.youtube.com/embed/');
+            file = file.replace('https://www.youtube.com/watch?v=', 'https://www.youtube.com/embed/') + '?rel=0';
+            file = file.replace('https://www.youtu.be/watch?v=', 'https://www.youtube.com/embed/') + '?rel=0';
             htmlString += `<div class=\'mySlides\' data-link=\'` + file + `\'>
                                 <iframe src=\'` + file + `\' frameborder=\'0\' allowfullscreen class=\'content\' style=\'width:` + 80 + `vw;height:` + 6.6 / 16 * 80 + `vw;\'></iframe>
                             </div>`;
