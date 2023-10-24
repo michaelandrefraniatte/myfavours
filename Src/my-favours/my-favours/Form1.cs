@@ -604,6 +604,12 @@ async function createModal(x) {
     htmlString = ``;
     for (let file of files) {
         if (!file.includes('www.youtu')) {
+            file = file.replace('https://drive.google.com/file/d/', 'https://drive.google.com/uc?id=');
+            file = file.replace('/view?usp=drive_link', '');
+            file = file.replace('/view?usp=sharing', '');
+            if (file.includes('https://drive.google.com/uc?id=')) {
+                file = file.replace('https://drive.google.com/uc?id=', 'http://drive.google.com/uc?id=');
+            }
             htmlString += `<div class=\'mySlides\' data-link=\'` + file + `\'>
                                 <img onload=\'checkSize(this)\' onerror=\'checkLoad(this)\' src=\'` + file + `\' class=\'content\' style=\'width:80%\'>
                             </div>`;
@@ -651,6 +657,12 @@ function contentminus() {
 }
 
 function getcontentminus(val) {
+    val = val.replace('https://drive.google.com/file/d/', 'https://drive.google.com/uc?id=');
+    val = val.replace('/view?usp=drive_link', '');
+    val = val.replace('/view?usp=sharing', '');
+    if (val.includes('https://drive.google.com/uc?id=')) {
+        val = val.replace('https://drive.google.com/uc?id=', 'http://drive.google.com/uc?id=');
+    }
     var item = val;
     if (!(item == null || item == '')) {
         myfavours = JSON.parse(JSON.stringify(savedstorage) || '[]');
@@ -680,6 +692,12 @@ function contentplus() {
 }
 
 function getcontentplus(val) {
+    val = val.replace('https://drive.google.com/file/d/', 'https://drive.google.com/uc?id=');
+    val = val.replace('/view?usp=drive_link', '');
+    val = val.replace('/view?usp=sharing', '');
+    if (val.includes('https://drive.google.com/uc?id=')) {
+        val = val.replace('https://drive.google.com/uc?id=', 'http://drive.google.com/uc?id=');
+    }
     var item = val;
     if (!(item == null || item == '')) {
         myfavours = JSON.parse(JSON.stringify(savedstorage)) || [];
@@ -776,6 +794,12 @@ function createMyfavours() {
     var keylength = keyNames.length;
     for (let keyName of keyNames) {
         if (keyName.length > 5) {
+            keyName = keyName.replace('https://drive.google.com/file/d/', 'https://drive.google.com/uc?id=');
+            keyName = keyName.replace('/view?usp=drive_link', '');
+            keyName = keyName.replace('/view?usp=sharing', '');
+            if (keyName.includes('https://drive.google.com/uc?id=')) {
+                keyName = keyName.replace('https://drive.google.com/uc?id=', 'http://drive.google.com/uc?id=');
+            }
             countlength++;
             if (countlength == 1) {
                 htmlString = `<div class=\'row\'>`;
@@ -801,6 +825,12 @@ function listminus() {
 }
 
 function getlistminus(val) {
+    val = val.replace('https://drive.google.com/file/d/', 'https://drive.google.com/uc?id=');
+    val = val.replace('/view?usp=drive_link', '');
+    val = val.replace('/view?usp=sharing', '');
+    if (val.includes('https://drive.google.com/uc?id=')) {
+        val = val.replace('https://drive.google.com/uc?id=', 'http://drive.google.com/uc?id=');
+    }
     var item = val;
     if (!(item == null || item == '')) {
         myfavours = JSON.parse(JSON.stringify(savedstorage) || '[]');
@@ -823,6 +853,12 @@ function listplus() {
 }
 
 function getlistplus(val) {
+    val = val.replace('https://drive.google.com/file/d/', 'https://drive.google.com/uc?id=');
+    val = val.replace('/view?usp=drive_link', '');
+    val = val.replace('/view?usp=sharing', '');
+    if (val.includes('https://drive.google.com/uc?id=')) {
+        val = val.replace('https://drive.google.com/uc?id=', 'http://drive.google.com/uc?id=');
+    }
     var item = val;
     if (!(item == null || item == '')) {
         myfavours = JSON.parse(JSON.stringify(savedstorage)) || [];
@@ -844,6 +880,12 @@ function changefavour() {
 }
 
 function getchangefavour(val) {
+    val = val.replace('https://drive.google.com/file/d/', 'https://drive.google.com/uc?id=');
+    val = val.replace('/view?usp=drive_link', '');
+    val = val.replace('/view?usp=sharing', '');
+    if (val.includes('https://drive.google.com/uc?id=')) {
+        val = val.replace('https://drive.google.com/uc?id=', 'http://drive.google.com/uc?id=');
+    }
     var item = val;
     if (!(item == null || item == '')) {
         myfavours = JSON.parse(JSON.stringify(savedstorage) || '[]');
@@ -2355,13 +2397,6 @@ function responseFunc() { }
         }
         public string OpenStorage(string param)
         {
-            Thread newThread = new Thread(new ThreadStart(showOpenFileDialog));
-            newThread.SetApartmentState(ApartmentState.STA);
-            newThread.Start();
-            return param;
-        }
-        public void showOpenFileDialog()
-        {
             string str = "";
             OpenFileDialog op = new OpenFileDialog();
             op.Filter = "All Files(*.*)|*.*";
@@ -2378,6 +2413,7 @@ function responseFunc() { }
                 }
                 Form1.webView21.ExecuteScriptAsync("reLoadPlayer();").ConfigureAwait(false);
             }
+            return param;
         }
         public string DownloadTXT(string param)
         {
