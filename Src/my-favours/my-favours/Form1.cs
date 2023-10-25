@@ -657,14 +657,7 @@ function contentminus() {
 }
 
 function getcontentminus(val) {
-    val = val.replace('https://drive.google.com/file/d/', 'https://drive.google.com/uc?id=');
-    val = val.replace('/view?usp=drive_link', '');
-    val = val.replace('/view?usp=sharing', '');
-    if (val.includes('https://drive.google.com/uc?id=')) {
-        val = val.replace('https://drive.google.com/uc?id=', 'http://drive.google.com/uc?id=');
-    }
-    val = val.replace('https://www.youtu.be/watch?v=', 'https://www.youtube.com/watch?v=');
-    var item = val;
+    var item = changeLink(val);
     if (!(item == null || item == '')) {
         myfavours = JSON.parse(JSON.stringify(savedstorage) || '[]');
         myfavours = transformObj(myfavours);
@@ -693,14 +686,7 @@ function contentplus() {
 }
 
 function getcontentplus(val) {
-    val = val.replace('https://drive.google.com/file/d/', 'https://drive.google.com/uc?id=');
-    val = val.replace('/view?usp=drive_link', '');
-    val = val.replace('/view?usp=sharing', '');
-    if (val.includes('https://drive.google.com/uc?id=')) {
-        val = val.replace('https://drive.google.com/uc?id=', 'http://drive.google.com/uc?id=');
-    }
-    val = val.replace('https://www.youtu.be/watch?v=', 'https://www.youtube.com/watch?v=');
-    var item = val;
+    var item = changeLink(val);
     if (!(item == null || item == '')) {
         myfavours = JSON.parse(JSON.stringify(savedstorage)) || [];
         myfavours = transformObj(myfavours);
@@ -827,14 +813,7 @@ function listminus() {
 }
 
 function getlistminus(val) {
-    val = val.replace('https://drive.google.com/file/d/', 'https://drive.google.com/uc?id=');
-    val = val.replace('/view?usp=drive_link', '');
-    val = val.replace('/view?usp=sharing', '');
-    if (val.includes('https://drive.google.com/uc?id=')) {
-        val = val.replace('https://drive.google.com/uc?id=', 'http://drive.google.com/uc?id=');
-    }
-    val = val.replace('https://www.youtu.be/watch?v=', 'https://www.youtube.com/watch?v=');
-    var item = val;
+    var item = changeLink(val);
     if (!(item == null || item == '')) {
         myfavours = JSON.parse(JSON.stringify(savedstorage) || '[]');
         myfavours = transformObj(myfavours);
@@ -856,14 +835,7 @@ function listplus() {
 }
 
 function getlistplus(val) {
-    val = val.replace('https://drive.google.com/file/d/', 'https://drive.google.com/uc?id=');
-    val = val.replace('/view?usp=drive_link', '');
-    val = val.replace('/view?usp=sharing', '');
-    if (val.includes('https://drive.google.com/uc?id=')) {
-        val = val.replace('https://drive.google.com/uc?id=', 'http://drive.google.com/uc?id=');
-    }
-    val = val.replace('https://www.youtu.be/watch?v=', 'https://www.youtube.com/watch?v=');
-    var item = val;
+    var item = changeLink(val);
     if (!(item == null || item == '')) {
         myfavours = JSON.parse(JSON.stringify(savedstorage)) || [];
         myfavours = transformObj(myfavours);
@@ -884,14 +856,7 @@ function changefavour() {
 }
 
 function getchangefavour(val) {
-    val = val.replace('https://drive.google.com/file/d/', 'https://drive.google.com/uc?id=');
-    val = val.replace('/view?usp=drive_link', '');
-    val = val.replace('/view?usp=sharing', '');
-    if (val.includes('https://drive.google.com/uc?id=')) {
-        val = val.replace('https://drive.google.com/uc?id=', 'http://drive.google.com/uc?id=');
-    }
-    val = val.replace('https://www.youtu.be/watch?v=', 'https://www.youtube.com/watch?v=');
-    var item = val;
+    var item = changeLink(val);
     if (!(item == null || item == '')) {
         myfavours = JSON.parse(JSON.stringify(savedstorage) || '[]');
         myfavours = transformObj(myfavours);
@@ -917,6 +882,17 @@ function openStorage() {
 
 function reLoadPlayer() {
     window.location.href = 'https://www.youtube.com/feed/subscriptions';
+}
+
+function changeLink(val) {
+    val = val.replace('https://drive.google.com/file/d/', 'https://drive.google.com/uc?id=');
+    val = val.replace('/view?usp=drive_link', '');
+    val = val.replace('/view?usp=sharing', '');
+    if (val.includes('https://drive.google.com/uc?id=')) {
+        val = val.replace('https://drive.google.com/uc?id=', 'http://drive.google.com/uc?id=');
+    }
+    val = val.replace('https://www.youtu.be/watch?v=', 'https://www.youtube.com/watch?v=');
+    return val;
 }
 
 </script>
