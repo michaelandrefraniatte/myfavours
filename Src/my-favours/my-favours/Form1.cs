@@ -519,6 +519,45 @@ var span = document.getElementsByClassName('close')[0];
 var modal = document.getElementById('myModal');
 var slideIndex = 1;
 var tempclass = '';
+var videoPlayer = {};
+var idiframes = [];
+
+function tweakIframe(el) {
+    var link = el.src;
+    var classid = link.replace('?enablejsapi=1', '');
+    el.id = classid;
+    var videoid = classid.replace('https://www.youtube.com/embed/', '');
+    idiframes.push(videoid);
+    window.YT.ready(function () {
+        videoPlayer[videoid] = new YT.Player(classid, {
+            width: el.width,
+            height: el.height,
+            videoId: videoid,
+            playerVars: {
+                autoplay: 1,
+                controls: 1,
+                rel: 0,
+                showinfo: 0,
+                loop: 0,
+                modestbranding: 1
+            },
+            events: {
+            }
+        });
+    });
+}
+
+$.ajax({
+    url: 'https://www.youtube.com/iframe_api',
+    dataType: 'script'
+}).done(function () {
+    loadPlayer();
+});
+
+function loadPlayer() {
+    window.onYouTubePlayerAPIReady = function () {
+    };
+}
 
 function changeTitle() {
     document.title = 'my-favours by michael franiatte';
@@ -577,11 +616,12 @@ function showSlides(n) {
   var link = $('.mySlides:visible').data('link');
   var downloadlink = document.getElementById('download');
   link = link.replace('https://www.youtube.com/embed/', 'https://www.youtube.com/watch?v=');
-  link = link.replace('?rel=0', '');
+  link = link.replace('?enablejsapi=1', '');
   downloadlink.href = link;
 }
 
 async function createModal(x) {
+    idiframes = [];
     $('.menushow-modal-container').html('');
     var htmlString = ``;
     htmlString = `<div class=\'bg-light fileminus\' style=\'display:float;position:absolute;float:right;right:100px;\' onclick=\'contentminus();\' title=\'remove a content\'>
@@ -617,10 +657,10 @@ async function createModal(x) {
     }
     for (let file of files) {
         if (file.includes('www.youtu')) {
-            file = file.replace('https://www.youtube.com/watch?v=', 'https://www.youtube.com/embed/') + '?rel=0';
-            file = file.replace('https://www.youtu.be/watch?v=', 'https://www.youtube.com/embed/') + '?rel=0';
+            file = file.replace('https://www.youtube.com/watch?v=', 'https://www.youtube.com/embed/') + '?enablejsapi=1';
+            file = file.replace('https://www.youtu.be/watch?v=', 'https://www.youtube.com/embed/') + '?enablejsapi=1';
             htmlString += `<div class=\'mySlides\' data-link=\'` + file + `\'>
-                                <iframe src=\'` + file + `\' frameborder=\'0\' allowfullscreen class=\'content\' style=\'width:` + 80 + `vw;height:` + 6.6 / 16 * 80 + `vw;\'></iframe>
+                                <iframe onload='tweakIframe(this);' src=\'` + file + `\' frameborder=\'0\' allowfullscreen class=\'content\' style=\'width:` + 80 + `vw;height:` + 6.6 / 16 * 80 + `vw;\'></iframe>
                             </div>`;
         }
     }
