@@ -650,9 +650,11 @@ async function createModal(x) {
             if (file.includes('https://drive.google.com/uc?id=')) {
                 file = file.replace('https://drive.google.com/uc?id=', 'http://drive.google.com/uc?id=');
             }
-            htmlString += `<div class=\'mySlides\' data-link=\'` + file + `\'>
-                                <img onload=\'checkSize(this)\' onerror=\'checkLoad(this)\' src=\'` + file + `\' class=\'content\' style=\'width:80%\'>
-                            </div>`;
+            if (checkExist(file)) {
+                htmlString += `<div class=\'mySlides\' data-link=\'` + file + `\'>
+                                    <img src=\'` + file + `\' class=\'content\' style=\'width:80%\'>
+                                </div>`;
+            }
         }
     }
     for (let file of files) {
@@ -670,20 +672,10 @@ async function createModal(x) {
     $('body').css('overflow-y', 'hidden');
 }
 
-async function checkSize(img) {
-    var imgblob = await fetchBlob(img.src);
-    if (parseInt(parseInt(imgblob.size)) < 100) {
-        img.parentElement.remove();
-    }
-}
-
-async function fetchBlob(url) {
-    const response = await fetch(url);
-    return response.blob();
-}
-
-function checkLoad(img) {
-    img.parentElement.remove();
+async function checkExist(url) {
+     const res = await fetch(url);
+     const buff = await res.blob();
+     return buff.type.startsWith('image/')
 }
 
 var folderprompt;
