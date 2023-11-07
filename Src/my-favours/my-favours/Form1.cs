@@ -644,23 +644,14 @@ async function createModal(x) {
     htmlString = ``;
     for (let file of files) {
         if (!file.includes('www.youtu')) {
-            file = file.replace('https://drive.google.com/file/d/', 'https://drive.google.com/uc?id=');
-            file = file.replace('/view?usp=drive_link', '');
-            file = file.replace('/view?usp=sharing', '');
-            if (file.includes('https://drive.google.com/uc?id=')) {
-                file = file.replace('https://drive.google.com/uc?id=', 'http://drive.google.com/uc?id=');
-            }
-            if (checkExist(file)) {
-                htmlString += `<div class=\'mySlides\' data-link=\'` + file + `\'>
-                                    <img src=\'` + file + `\' class=\'content\' style=\'width:80%\'>
-                                </div>`;
-            }
+            htmlString += `<div class=\'mySlides\' data-link=\'` + file + `\'>
+                                <img src=\'` + file + `\' class=\'content\' style=\'width:80%\'>
+                            </div>`;
         }
     }
     for (let file of files) {
         if (file.includes('www.youtu')) {
             file = file.replace('https://www.youtube.com/watch?v=', 'https://www.youtube.com/embed/') + '?enablejsapi=1';
-            file = file.replace('https://www.youtu.be/watch?v=', 'https://www.youtube.com/embed/') + '?enablejsapi=1';
             htmlString += `<div class=\'mySlides\' data-link=\'` + file + `\'>
                                 <iframe onload='tweakIframe(this);' src=\'` + file + `\' frameborder=\'0\' allowfullscreen class=\'content\' style=\'width:` + 80 + `vw;height:` + 6.6 / 16 * 80 + `vw;\'></iframe>
                             </div>`;
@@ -670,12 +661,6 @@ async function createModal(x) {
                   <a class=\'next\' onclick=\'plusSlides(1)\'>&#10095;</a>`;
     $('.slideshow-container').append(htmlString);
     $('body').css('overflow-y', 'hidden');
-}
-
-async function checkExist(url) {
-     const res = await fetch(url);
-     const buff = await res.blob();
-     return buff.type.startsWith('image/')
 }
 
 var folderprompt;
@@ -814,12 +799,6 @@ function createMyfavours() {
     var keylength = keyNames.length;
     for (let keyName of keyNames) {
         if (keyName.length > 5) {
-            keyName = keyName.replace('https://drive.google.com/file/d/', 'https://drive.google.com/uc?id=');
-            keyName = keyName.replace('/view?usp=drive_link', '');
-            keyName = keyName.replace('/view?usp=sharing', '');
-            if (keyName.includes('https://drive.google.com/uc?id=')) {
-                keyName = keyName.replace('https://drive.google.com/uc?id=', 'http://drive.google.com/uc?id=');
-            }
             countlength++;
             if (countlength == 1) {
                 htmlString = `<div class=\'row\'>`;
