@@ -643,17 +643,17 @@ async function createModal(x) {
     $('.slideshow-container').html('');
     htmlString = ``;
     for (let file of files) {
-        if (!file.includes('www.youtu')) {
-            htmlString += `<div class=\'mySlides\' data-link=\'` + file + `\'>
-                                <img src=\'` + file + `\' class=\'content\' style=\'width:80%\'>
-                            </div>`;
-        }
-    }
-    for (let file of files) {
         if (file.includes('www.youtu')) {
             file = file.replace('https://www.youtube.com/watch?v=', 'https://www.youtube.com/embed/') + '?enablejsapi=1';
             htmlString += `<div class=\'mySlides\' data-link=\'` + file + `\'>
                                 <iframe onload='tweakIframe(this);' src=\'` + file + `\' frameborder=\'0\' allowfullscreen class=\'content\' style=\'width:` + 80 + `vw;height:` + 6.6 / 16 * 80 + `vw;\'></iframe>
+                            </div>`;
+        }
+    }
+    for (let file of files) {
+        if (!file.includes('www.youtu')) {
+            htmlString += `<div class=\'mySlides\' data-link=\'` + file + `\'>
+                                <img src=\'` + file + `\' class=\'content\' style=\'width:80%\'>
                             </div>`;
         }
     }
