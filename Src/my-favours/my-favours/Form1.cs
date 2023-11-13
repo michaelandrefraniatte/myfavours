@@ -431,9 +431,28 @@ namespace my_favours
             background: #888;
         }
 
-            ::-webkit-scrollbar-thumb:hover {
-                background: #eee;
-            }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #eee;
+        }
+
+        .loader {
+          border: 5px solid #f3f3f3;
+          border-radius: 50%;
+          border-top: 5px solid #3498db;
+          width: 20px;
+          height: 20px;
+          margin: 50px;
+          animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+
+        .row div img {
+            width:80%;
+        }
     </style>
 	<style>
 		#dialogoverlay {
@@ -652,8 +671,8 @@ async function createModal(x) {
     }
     for (let file of files) {
         if (!file.includes('www.youtu')) {
-            htmlString += `<div class=\'mySlides\' data-link=\'` + file + `\'>
-                                <img src=\'` + file + `\' class=\'content\' style=\'width:80%\'>
+            htmlString += `<div class=\'mySlides loader\' data-link=\'` + file + `\'>
+                                <img src=\'` + file + `\' onload=\'removeLoader(this)\' class=\'content\' style=\'width:80%\'>
                             </div>`;
         }
     }
@@ -803,7 +822,7 @@ function createMyfavours() {
             if (countlength == 1) {
                 htmlString = `<div class=\'row\'>`;
             }
-            htmlString += `<img onmouseover=\'openModal(this)\' class=\'\' src=\'` + keyName + `\' style=\'width:80%\'>`;
+            htmlString += `<div class=\'loader\'><img onmouseover=\'openModal(this)\' onload=\'removeLoader(this)\' class=\'\' src=\'` + keyName + `\'></div>`;
             if (countlength >= keylength) {
                 htmlString += `</div>`;
             }
@@ -812,6 +831,10 @@ function createMyfavours() {
     $('.list').append(htmlString);
     $('.spinner').removeClass('show');
     $('.spinner').addClass('hide');
+}
+
+function removeLoader(img) {
+    img.parentNode.classList.remove('loader');
 }
 
 function handleFilename() {
