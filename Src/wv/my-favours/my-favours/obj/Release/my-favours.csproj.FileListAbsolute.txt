@@ -88,7 +88,6 @@ C:\Users\micha\Documents\github\myfavours\Src\wv\my-favours\my-favours\bin\Relea
 C:\Users\micha\Documents\github\myfavours\Src\wv\my-favours\my-favours\bin\Release\Microsoft.Web.WebView2.Wpf.xml
 C:\Users\micha\Documents\github\myfavours\Src\wv\my-favours\my-favours\bin\Release\Newtonsoft.Json.xml
 C:\Users\micha\Documents\github\myfavours\Src\wv\my-favours\my-favours\obj\Release\my-favours.csproj.AssemblyReference.cache
-C:\Users\micha\Documents\github\myfavours\Src\wv\my-favours\my-favours\obj\Release\my-favours.csproj.SuggestedBindingRedirects.cache
 C:\Users\micha\Documents\github\myfavours\Src\wv\my-favours\my-favours\obj\Release\my_favours.Form1.resources
 C:\Users\micha\Documents\github\myfavours\Src\wv\my-favours\my-favours\obj\Release\my_favours.Properties.Resources.resources
 C:\Users\micha\Documents\github\myfavours\Src\wv\my-favours\my-favours\obj\Release\my-favours.csproj.GenerateResource.cache
