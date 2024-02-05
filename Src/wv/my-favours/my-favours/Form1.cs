@@ -944,6 +944,7 @@ function changeLink(val) {
     val = val.replace('/view?usp=sharing', '');
     if (val.includes('https://drive.google.com/uc?id=')) {
         val = val.replace('https://drive.google.com/uc?id=', 'http://drive.google.com/uc?id=');
+        val = val.replace('http://drive.google.com/uc?id=', 'http://drive.google.com/thumbnail?sz=s4000&id=');
     }
     val = val.replace('https://www.youtu.be/watch?v=', 'https://www.youtube.com/watch?v=');
     return val;

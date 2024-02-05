@@ -3,5 +3,7 @@ https://drive.google.com/file/d/contentid/view?usp=sharing
 
 https://drive.google.com/uc?id=contentid
 
+http://drive.google.com/thumbnail?sz=s4000&id=contentid
+
 https://www.googleapis.com/drive/v3/files/contentid?key=apikey&alt=media
 
