@@ -2436,7 +2436,8 @@ function responseFunc() { }
         {
             string str = "";
             OpenFileDialog op = new OpenFileDialog();
-            op.Filter = "All Files(*.*)|*.*";
+            op.Filter = "All Files(*.txt)|*.txt";
+            op.FileName = "my-favours.txt";
             if (op.ShowDialog() == DialogResult.OK)
             {
                 using (StreamReader file = new StreamReader(op.FileName))
@@ -2463,7 +2464,8 @@ function responseFunc() { }
         public void showSaveFileAsDialog()
         {
             SaveFileDialog sa = new SaveFileDialog();
-            sa.Filter = "All Files(*.*)|*.*";
+            sa.Filter = "All Files(*.txt)|*.txt";
+            sa.FileName = "my-favours.txt";
             if (sa.ShowDialog() == DialogResult.OK)
             {
                 using (StreamWriter createdfile = new StreamWriter(sa.FileName))
