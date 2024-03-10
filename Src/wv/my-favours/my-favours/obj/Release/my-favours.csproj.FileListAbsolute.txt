@@ -92,6 +92,6 @@ C:\Users\micha\Documents\github\myfavours\Src\wv\my-favours\my-favours\obj\Relea
 C:\Users\micha\Documents\github\myfavours\Src\wv\my-favours\my-favours\obj\Release\my_favours.Properties.Resources.resources
 C:\Users\micha\Documents\github\myfavours\Src\wv\my-favours\my-favours\obj\Release\my-favours.csproj.GenerateResource.cache
 C:\Users\micha\Documents\github\myfavours\Src\wv\my-favours\my-favours\obj\Release\my-favours.csproj.CoreCompileInputs.cache
-C:\Users\micha\Documents\github\myfavours\Src\wv\my-favours\my-favours\obj\Release\my-favours.csproj.CopyComplete
 C:\Users\micha\Documents\github\myfavours\Src\wv\my-favours\my-favours\obj\Release\my-favours.exe
 C:\Users\micha\Documents\github\myfavours\Src\wv\my-favours\my-favours\obj\Release\my-favours.pdb
+C:\Users\micha\Documents\github\myfavours\Src\wv\my-favours\my-favours\obj\Release\my-favours.csproj.Up2Date

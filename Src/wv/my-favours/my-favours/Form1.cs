@@ -352,6 +352,7 @@ namespace my_favours
             left: 0;
             right: 0;
             margin: auto;
+            max-height: 100%;
         }
 
         .goto, .gotochannel, .collaspse, .folderminus, .foldersave, .folderopen, .fileminus, .folderplus, .fileplus, .filechange, .filelink {
