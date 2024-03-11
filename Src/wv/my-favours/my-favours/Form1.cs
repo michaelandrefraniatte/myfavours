@@ -237,21 +237,37 @@ namespace my_favours
         .row {
             display: grid;
             grid-template-columns: 21% 21% 21% 21% 21%;
-            margin-left: 5%;
             justify-content: center;
+            margin: 0;
+            padding-top: 2%;
+            padding-bottom: 2%;
+            padding-left: 4%;
+            padding-right: 4%;
         }
 
             .btn-group-vertical > .btn-group:after, .btn-group-vertical > .btn-group:before, .btn-toolbar:after, .btn-toolbar:before, .clearfix:after, .clearfix:before, .container-fluid:after, .container-fluid:before, .container:after, .container:before, .dl-horizontal dd:after, .dl-horizontal dd:before, .form-horizontal .form-group:after, .form-horizontal .form-group:before, .modal-footer:after, .modal-footer:before, .modal-header:after, .modal-header:before, .nav:after, .nav:before, .navbar-collapse:after, .navbar-collapse:before, .navbar-header:after, .navbar-header:before, .navbar:after, .navbar:before, .pager:after, .pager:before, .panel-body:after, .panel-body:before, .row:after, .row:before {
                 content: none;
             }
 
+         .icon-upload, .icon-download {
+            width: 0;
+            height: 0;
+            display; float;
+            float: left;
+         }
+
+         .list, .menu, .bg {
+            padding: 0;
+            margin: 0;
+         }
+
         .list img {
             object-fit: cover;
+            cursor: pointer;
             min-height: 100%;
             width: 100%;
-            cursor: pointer;
-            padding-bottom: 9%;
-            padding-right: 9%;
+            padding: 4%;
+            margin: auto;
         }
 
         #myModal {
@@ -343,8 +359,6 @@ namespace my_favours
         }
 
         .slideshow-container .mySlides img, .slideshow-container .mySlides iframe {
-            padding-left: 10%;
-            padding-right: 10%;
             border: none;
             position: absolute;
             top: 0;
@@ -352,6 +366,8 @@ namespace my_favours
             left: 0;
             right: 0;
             margin: auto;
+            padding-right: 10%;
+            padding-left: 10%;
             max-height: 100%;
         }
 
@@ -457,6 +473,9 @@ namespace my_favours
         }
 
         .loader {
+          position: relative;
+          right: calc(50% - 10px);
+          top: calc(50% - 10px);
           border: 5px solid #f3f3f3;
           border-radius: 50%;
           border-top: 5px solid #3498db;
@@ -469,10 +488,6 @@ namespace my_favours
         @keyframes spin {
           0% { transform: rotate(0deg); }
           100% { transform: rotate(360deg); }
-        }
-
-        .row div img {
-            width:80%;
         }
     </style>
 	<style>
