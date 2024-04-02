@@ -472,17 +472,15 @@ namespace my_favours
             background: #eee;
         }
 
-        .loader {
+        .list .loader {
           position: relative;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
           border: 5px solid #f3f3f3;
           border-radius: 50%;
           border-top: 5px solid #3498db;
           width: 20px;
           height: 20px;
-          margin: 50px;
+          margin: auto;
+          margin-top: calc(50% - 10px);
           animation: spin 2s linear infinite;
         }
 
@@ -708,8 +706,8 @@ async function createModal(x) {
     }
     for (let file of files) {
         if (!file.includes('www.youtu')) {
-            htmlString += `<div class=\'mySlides loader\' data-link=\'` + file + `\'>
-                                <img src=\'` + file + `\' onload=\'removeLoader(this)\' class=\'content\' style=\'width:80%\'>
+            htmlString += `<div class=\'mySlides\' data-link=\'` + file + `\'>
+                                <img src=\'` + file + `\' class=\'content\' style=\'width:80%\'>
                             </div>`;
         }
     }
