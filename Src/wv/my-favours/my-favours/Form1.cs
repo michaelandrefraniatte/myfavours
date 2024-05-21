@@ -103,14 +103,16 @@ namespace my_favours
             this.pictureBox1.Location = new Point(cx / 2 - this.pictureBox1.Size.Width / 2, cy * 1 / 4);
             this.progressBar1.Location = new Point(cx / 2 - this.progressBar1.Size.Width / 2, cy * 2 / 3);
             Task.Run(() => Loader());
-            CoreWebView2EnvironmentOptions options = new CoreWebView2EnvironmentOptions("--disable-web-security --autoplay-policy=no-user-gesture-required", "en");
+            CoreWebView2EnvironmentOptions options = new CoreWebView2EnvironmentOptions("--disable-web-security --allow-file-access-from-files --allow-file-access", "en");
             CoreWebView2Environment environment = await CoreWebView2Environment.CreateAsync(null, null, options);
             await webView21.EnsureCoreWebView2Async(environment);
+            webView21.CoreWebView2.SetVirtualHostNameToFolderMapping("appassets", "assets", CoreWebView2HostResourceAccessKind.Allow);
+            webView21.CoreWebView2.Settings.AreDevToolsEnabled = false;
+            webView21.CoreWebView2.Settings.IsStatusBarEnabled = false;
             webView21.CoreWebView2.ContainsFullScreenElementChanged += (obj, args) =>
             {
                 this.FullScreen = webView21.CoreWebView2.ContainsFullScreenElement;
             };
-            webView21.CoreWebView2.Settings.AreDevToolsEnabled = true;
             webView21.CoreWebView2.SetVirtualHostNameToFolderMapping("appassets", "assets", CoreWebView2HostResourceAccessKind.DenyCors);
             webView21.Source = new System.Uri("https://www.youtube.com/feed/subscriptions");
             webView21.Dock = DockStyle.Fill;
@@ -220,9 +222,8 @@ namespace my_favours
                 stringinject = @"document.getElementsByTagName('html')[0].innerHTML = '<head></head><body></body>';";
                 await execScriptHelper(stringinject);
                 stringinject = @"
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'>
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.css'>
+    <link rel='stylesheet' href='https://appassets/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://appassets/font-awesome.css'>
     <style>
         body {
             font-family: sans-serif;
@@ -1035,13 +1036,13 @@ function responseFunc() { }
         };
         head.appendChild(script);
     }
-    getScript('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js', function () {
+    getScript('https://appassets/jquery.min.js', function () {
         if (typeof jQuery == 'undefined') {
             console.log('Sorry, but jQuery wasn\'t able to load');
         } else {
             console.log('This page is now jQuerified with v' + $.fn.jquery);
             $(document).ready(function () { });
-                var script = document.createElement('script'); script.src = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'; document.head.appendChild(script);
+                var script = document.createElement('script'); script.src = 'https://appassets/bootstrap.min.js'; document.head.appendChild(script);
                 $(document).ready(function(){$('body').html(stringcontent);
             });
         }
